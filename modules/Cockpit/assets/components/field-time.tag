@@ -16,6 +16,10 @@
                 this.refs.input.setAttribute('required', 'required');
             }
 
+            (['step', 'min', 'max']).forEach(function(key) {
+                if (opts[key]) $this.refs.input.setAttribute(key, opts[key]);
+            });
+
             App.assets.require(['/assets/lib/uikit/js/components/timepicker.js'], function() {
 
                 UIkit.timepicker(this.refs.input, opts).element.on('change', function() {
